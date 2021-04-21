@@ -1,3 +1,0 @@
-### Title
-First git project.
-

@@ -1,5 +1,6 @@
 import tkinter as tk
 from parameters import *
+import time
 
 
 class Pole:
@@ -26,6 +27,8 @@ class Pole:
     def stupid_user_move(self, *args):
         """ Вызывает функцию хода пользователя принажатии кнопки """
         self.root.do_move(self.num, 'x')
+        self.root.update()
+        time.sleep(0.5)
         if not self.root.end:
             self.root.turn_pc()
 

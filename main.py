@@ -3,7 +3,7 @@ from application import *
 
 def main():
     root = tk.Tk()
-    root.title('Игра "Крестики - Нолики"')
+    root.title('tic-tac-toe')
     root.geometry('%dx%d' % (field_w, field_h))
     root.resizable(False, False)
     app = Application(root)

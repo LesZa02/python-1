@@ -32,7 +32,7 @@ class Application(tk.Frame):
 
         # клетки
         self.pole = {}
-        for num in range(9):
+        for num in range(field_size**2):
             self.pole[num] = Pole(self, num)
 
         # кнопка старт
@@ -67,7 +67,7 @@ class Application(tk.Frame):
         self.free_pos = self.start_pole[:]
         self.board = self.board_start[:]
         self.status.set('Game on')
-        for i in range(9):
+        for i in range(field_size**2):
             cur_pole = self.pole[i]
             cur_pole.bind()
             cur_pole.mark_pole('')
@@ -79,7 +79,7 @@ class Application(tk.Frame):
         self.button_start.unbind("<Button-1>")
 
     def check_win(self, sign, move):
-        x, y = move % 3, (move // 3) * 3
+        x, y = move % field_size, (move // field_size) * field_size
         self.wins = []
         if sign == self.board[y] and sign == self.board[y + 1] and sign == self.board[y + 2]:
             self.wins = [y, y + 1, y + 2]
@@ -89,7 +89,7 @@ class Application(tk.Frame):
             self.wins = [0, 4, 8]
         if sign == self.board[2] and sign == self.board[4] and sign == self.board[6]:
             self.wins = [2, 4, 6]
-        return len(self.wins) == 3
+        return len(self.wins) == field_size
 
     def is_over(self, sign, move):
         """
